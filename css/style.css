@@ -110,4 +110,16 @@ body {
 .post-tags p {
   margin: 0 10px 0 0;
 }
+
+/* Media */
+@media (max-width: 767px) {
+  .wrapper {
+    -ms-flex-direction: column;
+        flex-direction: column;
+  }
+  .sidebar,
+  .posts {
+    margin-bottom: 10px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
