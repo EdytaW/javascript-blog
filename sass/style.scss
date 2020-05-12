@@ -63,7 +63,7 @@ body {
 .posts {
     flex: 2 0 0;
     position: relative;
-    height: 700px;
+    height: 1000px;
 }
 
 .sidebar,
@@ -123,7 +123,7 @@ article {
     transition: all 2s;
 
     &.active {
-        //        display: block;
+        display: block;
         opacity: 100%;
     }
 }
