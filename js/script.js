@@ -87,7 +87,7 @@
     for (let link of links) {
       link.addEventListener('click', titleClickHandler);
     }
-  };
+  }
 
   generateTitleLinks();
     
@@ -142,15 +142,15 @@
     console.log('clickedElement (with plus): ' + clickedElement);
       
   /* make a new constant "href" and read the attribute "href" of the clicked element */
-    const articleSelector = clickedElement.getAttribute('href');
-    console.log(articleSelector);
+    const href = clickedElement.getAttribute('href');
+    console.log(href);  
       
   /* make a new constant "tag" and extract tag from the "href" constant */
     const tag = href.replace('#tag-', '');
   /* find all tag links with class active */
-    const activeLinks = document.querySelectorAll('.titles a.active');
-    
-      console.log(activeLinks);
+//    const activeLinks = document.querySelectorAll('.titles a.active');
+    const activeLinks = document.querySelectorAll('a[href="' + href + '"]');
+    console.log(activeLinks);
       
   /* START LOOP: for each active tag link */
     for (let activeLink of activeLinks) {  
@@ -160,7 +160,7 @@
     }
       
   /* find all tag links with "href" attribute equal to the "href" constant */
-    const tagLinks = document.querySelectorAll('href');
+    const tagLinks = document.querySelectorAll(href);
       
   /* START LOOP: for each found tag link */
     for (let tagLink of tagLinks) {
