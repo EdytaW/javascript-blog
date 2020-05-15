@@ -93,8 +93,56 @@
     
 
     //TAGS//
+  function generateTags(){
+//   function generateTags(customSelector = ''){
+  /* find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+  /* START LOOP: for every article: */
+    for (let article of articles) {
+    /* find tags wrapper */
+      const titleList = article.querySelector(optArticleTagsSelector);
+      titleList.innerHTML = '';    
+    /* make html variable with empty string */
+      let html = '';
+    /* get tags from data-tags attribute */
+      const articleTags = article.getAttribute('data-tags');
+      console.log(articleTags);
+        
+    /* split tags into array */
+      const articleTagsArray = articleTags.split(' ');
+      console.log(articleTagsArray); 
+        
+    /* START LOOP: for each tag */
+      for(let tag of articleTagsArray){
+        console.log(tag);
+      /* generate HTML of the link */
+//        const linkHTML = '<li><a href="#tag-' + tag + '"><span>' +  tag + '</span></a></li>';
+        const linkHTML = '<li><a href="#tag-' + articleTags + '"><span>' +  tag + '</span></a></li>';
+        console.log(linkHTML);
+      /* add generated code to html variable */
+        html = html + linkHTML;
+    /* END LOOP: for each tag */
+      }
+    /* insert HTML of all the links into the tags wrapper */
+      titleList.innerHTML = html;
+      console.log(html);
+    
+        
+//      const tags = document.querySelectorAll('.post-tags .list');
+//      console.log('Links:', tags);
+
+//      for (let tag of tags) {
+//      tag.addEventListener('click', tagClickHandler);
+//     }        
+  /* END LOOP: for every article: */
+    }
+  }
+
+  generateTags(); 
     
   const tagClickHandler = function(event){
+    console.log('Link was clicked!');
+    console.log(event);
   /* prevent default action for this event */
     event.preventDefault();
       
@@ -110,6 +158,7 @@
     const tag = href.replace('#tag-', '');
   /* find all tag links with class active */
 //    const activeLinks = document.querySelectorAll('.titles a.active');
+//    const activeLinks = document.querySelectorAll('a.active[href^="#tag-"]');
     const activeLinks = document.querySelectorAll('a[href="' + href + '"]');
     console.log(activeLinks);
       
@@ -133,53 +182,7 @@
   /* execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-tags~="' + tag + '"]'); 
   }
- 
-    
-//  function generateTags(){
-   function generateTags(customSelector = ''){
-  /* find all articles */
-    const articles = document.querySelectorAll(optArticleSelector);
-  /* START LOOP: for every article: */
-    for (let article of articles) {
-    /* find tags wrapper */
-      const titleList = article.querySelector(optArticleTagsSelector);
-      titleList.innerHTML = '';    
-    /* make html variable with empty string */
-      let html = '';
-    /* get tags from data-tags attribute */
-      const articleTags = article.getAttribute('data-tags');
-      console.log(articleTags);
-        
-    /* split tags into array */
-      const articleTagsArray = articleTags.split(' ');
-      console.log(articleTagsArray); 
-        
-    /* START LOOP: for each tag */
-      for(let tag of articleTagsArray){
-        console.log(tag);
-      /* generate HTML of the link */
-        const linkHTML = '<li><a href="#tag-' + tag + '"><span>' +  tag + '</span></a></li>';
-        console.log(linkHTML);
-      /* add generated code to html variable */
-        html = html + linkHTML;
-    /* END LOOP: for each tag */
-      }
-    /* insert HTML of all the links into the tags wrapper */
-      titleList.innerHTML = html;
-      console.log(html);
-        
-      const links = document.querySelectorAll('.titles a');
-      console.log('Links:', links);
 
-     for (let link of links) {
-      link.addEventListener('click', tagClickHandler);
-     }        
-  /* END LOOP: for every article: */
-    }
-  }
-
-  generateTags(); 
-    
     
   function addClickListenersToTags(){
   /* find all links to tags */
@@ -187,11 +190,16 @@
   /* START LOOP: for each link */
     for (let link of activeLinks) {
     /* add tagClickHandler as event listener for that link */
-      link.addEventListener('click',tagClickHandler);
+      link.addEventListener('click', tagClickHandler);
   /* END LOOP: for each link */
     }
   }
-  addClickListenersToTags();    
+  addClickListenersToTags(); 
+    
+// AUTORS //
+    
+    
+    
 }
 
 
