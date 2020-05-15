@@ -106,6 +106,7 @@ article {
 .post.active {
   display: block;
   opacity: 100%;
+  z-index: 9999;
 }
 
 .post-author {

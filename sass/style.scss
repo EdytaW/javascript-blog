@@ -125,6 +125,7 @@ article {
     &.active {
         display: block;
         opacity: 100%;
+        z-index: 9999;
     }
 }
 
