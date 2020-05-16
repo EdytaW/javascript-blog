@@ -235,8 +235,7 @@
   /* make a new constant "author" and extract author from the "href" constant */
     const author = href.replace('#', '');
   /* find all author links with class active */
-    // const activeLinks = document.querySelectorAll('a[href="' + href + '"]');
-    const activeLinks = document.querySelectorAll();
+    const activeLinks = document.querySelectorAll('a[href="' + href + '"]');
     console.log(activeLinks);
       
   /* START LOOP: for each active author link */
@@ -254,6 +253,7 @@
     for (let authorLink of authorLinks) {
     /* add class active */
       authorLink.classList.add('active');
+      console.log(authorLink);
   /* END LOOP: for each found tag link */
     } 
   /* execute function "generateTitleLinks" with article selector as argument */
