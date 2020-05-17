@@ -87,6 +87,11 @@ body {
   display: inline-block;
 }
 
+.tag-size-5 {
+  font-size: 30px;
+  color: red;
+}
+
 /* Authors */
 .authors li {
   margin-bottom: 12px;
