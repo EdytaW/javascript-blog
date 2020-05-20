@@ -3,7 +3,7 @@
 //    console.log('links:', links);
 //});
 {
-  const titleClickHandler = function (event) {
+  const titleClickHandler = function (event){
     console.log('Link was clicked!');
     console.log(event);
 
@@ -63,7 +63,7 @@
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
     let html = '';
 
-    for (let article of articles) {
+    for (let article of articles){
 
       /* get the article id */
       const articleId = article.getAttribute('id');
@@ -254,58 +254,39 @@
     
     //AUTORS//
     
-  function generateAuthors () {
-    /* [NEW] create a new variable allAuthors with an empty array */
-    let allAuthors = {};
-    console.log(allAuthors);
-     /* find all articles */
-    const articles = document.querySelectorAll(optArticleSelector);
-    console.log(articles);
-    /* START LOOP: for every article: */
-    for (let article of articles) { 
-        /* find author wrapper */
-      const author = article.querySelector(optArticleAuthorSelector);
-      console.log(author);
-      author.innerHTML = '';
-      /* make html variable with empty string */
-      let html = ''; 
-      /* get authors from data-author attribute */
-      const articleAuthor = author.getAttribute('data-author');
-      console.log(articleAuthor);   
-       /* create HTML of the link */
-      const linkHTML = '<li><a href="#' + articleAuthor + '"><span>' + articleAuthor + '</span></a></li>';
-      console.log(linkHTML);
-      /* insert link into author */
-      html = html + linkHTML;
-      console.log(html);    
-      author.innerHTML = html;  
-      console.log(html); 
-      /* END LOOP: for every article: */
-    }  
-    /* [NEW] find list of authors in right column */
-    const authorList = document.querySelectorAll('.authors');
-    console.log(authorList);
-    
-    //  /* [NEW] add html from allTags to tagList */
-    // authorList.innerHTML = allAuthors.join(' ');
-    console.log(authorList);
-    // console.log(allAuthors);
-    // /* [NEW] create variable for all links HTML code */
-    let allAuthorsHTML = '';
+  function generateAuthors(){
+      /* find all articles */
+      const articles = document.querySelectorAll(optArticleSelector);
+      console.log(articles);
 
-    /* [NEW] START LOOP: for each tag in allTags: */
-    for(let author in authorList){
-      /* [NEW] generate code of a link and add it to allTagsHTML */
-      // allAuthorHTML += author + ' (' + allAuthors[author] + ') ';
-      const authorLinkHTML = '<li><a href="#author=' + author + '"' + '">' + author + '</a></li>';
-      allAuthorsHTML += authorLinkHTML;
-      console.log('authorLinkHTML: ', authorLinkHTML);
-    }
-    /* [NEW] END LOOP: for each tag in allTags: */
+      let html = '';
+      /* START LOOP: for every article: */
+      for (let article of articles) {
+          /* find author wrapper */
+          const author = article.querySelector(optArticleAuthorSelector);
+          console.log(author);
+          author.innerHTML = '';
+          /* make html variable with empty string */
 
-    /*[NEW] add HTML from allTagsHTML to tagList */
-    authorList.innerHTML = allAuthorsHTML;
-    console.log(authorList);
+          /* get authors from data-author attribute */
+          const articleAuthor = author.getAttribute('data-author');
+          console.log(articleAuthor);
+          /* create HTML of the link */
+          const linkHTML = '<li><a href="#' + articleAuthor + '"><span>' + articleAuthor + '</span></a></li>';
+          console.log(linkHTML);
+          /* insert link into author */
+          html = html + linkHTML;
+          console.log(html);
+          author.innerHTML = linkHTML;
+          console.log(html);
+          /* END LOOP: for every article: */
+      }
+      /* [NEW] find list of authors in right column */
+      const authorList = document.querySelector('.authors');
+
+      /*[NEW] add HTML from allTagsHTML to tagList */
+      authorList.innerHTML = html;
+      console.log(authorList);
   }
   
   generateAuthors ();
