@@ -6,8 +6,9 @@
   const templates = {
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
-    // authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML)
-    tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
+    authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
+    authorCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
   }
 
   const titleClickHandler = function (event){
@@ -195,7 +196,6 @@
   generateTags(); 
     
   const tagClickHandler = function(event){
-    console.log('Link was clicked!');
     
   /* prevent default action for this event */
     event.preventDefault();
@@ -263,9 +263,10 @@
           const articleAuthor = author.getAttribute('data-author');
           
           /* create HTML of the link */
-          const linkHTML = '<li><a href="#' + articleAuthor + '"><span>' + articleAuthor + '</span></a></li>';
-          // const linkHTMLData = {class: articleAuthor, title: articleAuthor};
-          // const linkHTML = templates.authorLink(linkHTMLData);
+          // const linkHTML = '<li><a href="#' + articleAuthor + '"><span>' + articleAuthor + '</span></a></li>';
+          const linkHTMLData = {class: articleAuthor, title: articleAuthor};
+          const linkHTML = templates.authorLink(linkHTMLData);
+          
           /* insert link into author */
           html = html + linkHTML;
           
