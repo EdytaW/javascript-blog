@@ -8,7 +8,7 @@
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
     authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
     tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
-    authorCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
+    authorCloudLink: Handlebars.compile(document.querySelector('#template-author-cloud-link').innerHTML)
   }
 
   const titleClickHandler = function (event){
@@ -250,7 +250,8 @@
       /* find all articles */
       const articles = document.querySelectorAll(optArticleSelector);
 
-      let html = '';
+      // let html = '';
+      const allAuthorsData = {authors: []};
       /* START LOOP: for every article: */
       for (let article of articles) {
           /* find author wrapper */
@@ -276,7 +277,10 @@
       }
       /* [NEW] find list of authors in right column */
       const authorList = document.querySelector('.authors');
-
+      allAuthorsData.authors.push({
+        title: authorList,
+      
+      });
       /*[NEW] add HTML from allTagsHTML to tagList */
       // authorList.innerHTML = html;
       html.innerHTML = templates.authorCloudLink(html);
