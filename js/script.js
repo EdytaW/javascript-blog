@@ -278,7 +278,9 @@
       const authorList = document.querySelector('.authors');
 
       /*[NEW] add HTML from allTagsHTML to tagList */
-      authorList.innerHTML = html;
+      // authorList.innerHTML = html;
+      html.innerHTML = templates.authorCloudLink(html);
+      console.log(html);
   }
 
   generateAuthors ();
